@@ -2,9 +2,15 @@ require 'test_helper'
 
 class RecipeTest < ActiveSupport::TestCase
   def setup
-    @recipe = Recipe.new(name: "veg pulao",description: "Veg Biriyani")
+    @chef = Chef.create!(chefname:"testuser",email:"tuser@mail.com")
+    @recipe = @chef.recipes.build(name: "veg pulao",description: "Veg Biriyani" )
   end 
   test "valid recipe" do
+    assert @recipe.valid?
+  end 
+
+  test "checking chef foreign key " do
+    @recipe.chef_id = nil
     assert_not @recipe.valid?
   end 
 
@@ -20,11 +26,12 @@ class RecipeTest < ActiveSupport::TestCase
   
   test "desc more than 10 char" do
     @recipe.description = 'a'*13
-    assert_not @recipe.valid?
+    assert @recipe.valid?
   end 
+
   test "desc less than 500 char" do
     @recipe.description = 'a'*401
-    assert_not @recipe.valid?
+    assert @recipe.valid?
   end 
 
 end 
