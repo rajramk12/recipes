@@ -26,6 +26,8 @@ class RecipesTest < ActionDispatch::IntegrationTest
   test "get recipe show " do
     get recipe_path(@recipe1.id)
     assert_template 'recipes/show'
+    assert_select 'a[href=?]', edit_recipe_path(@recipe1)
+    assert_select 'a[href=?]', recipe_path(@recipe1),text:"Delete Recipe"
   end
 
   test "create valid recipe " do
