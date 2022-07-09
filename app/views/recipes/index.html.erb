@@ -1,0 +1,19 @@
+<div class="container">
+<%= render 'shared/pagetitle' , pageTitle:'All Recipes'%>
+<% @recipes.each do |recipe|%>
+  <div class="row">
+    <div class="col-md-2">
+      <section class="chef_info center">
+        <%= gravatar_for(recipe.chef, size: 120) %>
+        <br/>
+        <p><small> <%=recipe.chef.chefname%> </small></p>
+      </section>
+    </div>
+  <div class="col-md-8 well">
+    <h3 align="center"><%= link_to recipe.name,recipe_path(recipe)%> </h3>
+    <p><%= truncate(recipe.description, length: 150)%> </p>
+    <p><small>Created <%= time_ago_in_words(recipe.created_at) %> ago</small> </p>
+  </div>
+</div>
+<% end %>
+</div>

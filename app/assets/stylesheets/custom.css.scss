@@ -32,7 +32,19 @@ text-decoration: none;
 }
 
 .btn-xlarge:hover {
-  color: red;
+  color: blue;
 // text-decoration: none;
   text-transform: uppercase;
+}
+
+.description{
+  margin-top: 0;  
+}
+
+.well a {
+  color: lightblue;
+}
+
+.chef_info.center{
+  margin-top:40px;
 }
