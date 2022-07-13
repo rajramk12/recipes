@@ -7,15 +7,16 @@
       <p> <%= simple_format(@recipe.description) %> </p>
     </div>
   </div>
-  <div class="row">
+  <div class="row buttons">
     <div class="recipe-actions col-md-10-offset-1">
       <p class="center">
-      <%= link_to gravatar_for(@recipe.chef, size: 120) ,recipes_path%>
-      <p>
-      <small> <%= @recipe.chef.chefname%>
+        <%= link_to gravatar_for(@recipe.chef, size: 120) ,recipes_path%>
+        <small> <%= @recipe.chef.chefname%>
       Created : <%= time_ago_in_words(@recipe.created_at)  %> Ago </small><br/>
-      <%= link_to "Edit Recipe" ,edit_recipe_path(@recipe), class:"btn btn-warning"%>
-      <%= button_to 'Destroy', recipe_path(@recipe), data: { confirm: 'Are you sure?'}, method: :delete, class: "btn btn-danger" %>
+        <div class="buttons">
+            <%= link_to   "Edit Recipe" ,edit_recipe_path(@recipe), class:"btn btn-warning buttons"%>
+            <%= link_to   "Destroy", recipe_path(@recipe), data: { confirm: 'Are you sure?'}, method: :delete, class: "btn btn-danger buttons" %>
+        </div>
       </p>
     </div>
    </div>

@@ -3,7 +3,7 @@ require "test_helper"
 class RecipesTest < ActionDispatch::IntegrationTest
 
   def setup
-    @chef = Chef.create!(chefname: "super",email:"test@email.com")
+    @chef = Chef.create!(chefname: "super",email:"test@email.com",password:'superji',password_confirmation:'superji')
     @recipe1 = Recipe.create!(name: "Veg Pulao", description: "Rice, Veggies and more", chef: @chef)
     @recipe2 = @chef.recipes.build(name: "Chicken Pulao", description: "Rice, Chicken and more")
     @recipe2.save
@@ -16,7 +16,7 @@ class RecipesTest < ActionDispatch::IntegrationTest
 
   test "read recipes/index page" do
     get recipes_path
-    assert_template 'recipes/index'
+    assert_template "recipes/index"
     # assert_match @recipe1.name,response.body
     assert_select "a[href=?]", recipe_path(@recipe1),text:@recipe1.name
     # assert_match @recipe2.name, response.body
@@ -24,10 +24,11 @@ class RecipesTest < ActionDispatch::IntegrationTest
   end
 
   test "get recipe show " do
-    get recipe_path(@recipe1.id)
-    assert_template 'recipes/show'
-    assert_select 'a[href=?]', edit_recipe_path(@recipe1)
-    assert_select 'a[href=?]', recipe_path(@recipe1),text:"Delete Recipe"
+    get recipe_path(@recipe1)
+    assert_response :success
+    assert_select "a[href=?]", edit_recipe_path(@recipe1), text: "Edit Recipe"
+    # assert_select "a[href=?]", recipe_path(@recipe1),text: "Destroy"
+    assert_template "recipes/show"
   end
 
   test "create valid recipe " do
