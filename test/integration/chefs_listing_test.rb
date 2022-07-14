@@ -1,0 +1,20 @@
+require "test_helper"
+
+class ChefsListingTest < ActionDispatch::IntegrationTest
+  # test "the truth" do
+  #   assert true
+  # end
+  def setup
+    @chef1 = Chef.create!(chefname:'userr1', email:'userr1@email.com',password:'pasword',password_confirmation:'pasword')
+    @chef2 = Chef.create!(chefname:'userr2', email:'userr2@email.com',password:'pasword',password_confirmation:'pasword')
+  end
+
+  test "list all chefs" do
+    get chefs_path
+    assert_template 'chefs/index'
+    assert_select "a[href=?]", chef_path(@chef1), text: @chef1.chefname.capitalize
+    assert_select "a[href=?]", chef_path(@chef2), text: @chef2.chefname.capitalize
+    # assert_match @chef1.chefname, response.body
+    # assert_match @chef2.chefname, response.body
+  end
+end

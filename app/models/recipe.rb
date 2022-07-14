@@ -4,5 +4,6 @@ class Recipe < ApplicationRecord
 
   belongs_to :chef
   validates :chef_id, presence: true
-
-end 
+  # to get recent recipes
+  default_scope -> {order(updated_at: :desc)}
+end

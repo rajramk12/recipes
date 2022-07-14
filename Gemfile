@@ -9,11 +9,6 @@ gem "rails", "~> 7.0.3"
 #trying mongoDB
 # gem 'mongoid', '~> 7.4'
 
-# The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
-gem "sprockets-rails"
-
-gem "jquery-rails"
-
 # Use the Puma web server [https://github.com/puma/puma]
 gem "puma", "~> 5.0"
 
@@ -35,9 +30,6 @@ gem "jbuilder"
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
 # gem "kredis"
 
-# Use Active Model has_secure_password [https://guides.rubyonrails.org/active_model_basics.html#securepassword]
-gem "bcrypt", "~> 3.1.7"
-
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem "tzinfo-data"
 
@@ -49,6 +41,19 @@ gem 'bootstrap-sass', '~> 3.4', '>= 3.4.1'
 
 # Use Sass to process CSS
 # gem "sassc-rails"
+
+
+# Use Active Model has_secure_password [https://guides.rubyonrails.org/active_model_basics.html#securepassword]
+gem "bcrypt", "~> 3.1.7"
+
+# The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
+gem "sprockets-rails"
+
+gem "jquery-rails"
+
+gem 'will_paginate', '~> 3.3', '>= 3.3.1'
+
+gem 'bootstrap-will_paginate', '~> 1.0'
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"

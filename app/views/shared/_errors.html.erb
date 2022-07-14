@@ -5,7 +5,7 @@
       <div class="panel-heading">
       <h2 class="panel-title"> <%= pluralize(orm.errors.count ,"errors") %> from saving this <%= orm.class%> </h2>
       </div>
-      <div class="panel-heading">
+      <div class="panel-body">
           <ul>
             <% orm.errors.full_messages.each do |msg|%>
             <li><%= msg%></li>
