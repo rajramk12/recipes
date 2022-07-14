@@ -10,7 +10,7 @@
   <div class="row buttons">
     <div class="recipe-actions col-md-10-offset-1">
       <p class="center">
-        <%= link_to gravatar_for(@recipe.chef, size: 120) ,recipes_path%>
+        <%= link_to gravatar_for(@recipe.chef, size: 120) ,chef_path(@recipe.chef)%>
         <small> <%= @recipe.chef.chefname%>
       Created : <%= time_ago_in_words(@recipe.created_at)  %> Ago </small><br/>
         <div class="buttons">
