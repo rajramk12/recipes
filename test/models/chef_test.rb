@@ -74,4 +74,12 @@ class ChefTest < ActiveSupport::TestCase
     assert @chef.valid?
   end
 
+  test "check dependent recipes are deleted" do
+    @chef.save
+    @chef.recipes.build(name:"new recipe",description:"new descriptoion fasasa")
+    @chef.save
+    assert_difference 'Recipe.count', -1 do
+      @chef.destroy
+    end
+  end
 end
