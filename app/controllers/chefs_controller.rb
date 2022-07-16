@@ -1,6 +1,7 @@
 class ChefsController < ApplicationController
   before_action :get_chef, only: [:show,:edit,:update,:destroy]
   before_action :require_same_user, only: [:edit,:update,:destroy]
+  before_action :require_admin , only: [:destroy]
 
   def index
     @chefs = Chef.paginate(page: params[:page], per_page: 5)
@@ -38,10 +39,12 @@ class ChefsController < ApplicationController
   end
 
   def destroy
-    if @chef.destroy
-      flash[:success] = "Chef #{@chef.chefname} and all recipes deleted"
-      session[:chef_id] = nil
-      redirect_to chefs_path
+    if !@chef.admin?
+      if @chef.destroy
+        flash[:success] = "Chef #{@chef.chefname} and all recipes deleted"
+        session[:chef_id] = nil
+        redirect_to chefs_path
+      end
     end
   end
 
@@ -55,9 +58,17 @@ class ChefsController < ApplicationController
     end
 
     def require_same_user
-      if current_user != @chef
+      if logged_in? && current_user != @chef && !current_user.admin?
         flash[:danger] = 'You can edit your profile only!'
-        redirect_to recipes_path
+        redirect_to @chef
       end
     end
+
+    def require_admin
+      if logged_in? && !current_user.admin?
+        flash[:danger] = 'Restricted action! Check with Admin Team'
+        redirect_to chefs_path
+      end
+    end
+
 end
