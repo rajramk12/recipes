@@ -9,14 +9,15 @@ class ChefSignupInTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test "validate sign up " do
+  test "valid sign up " do
     get signup_path
     assert_difference 'Chef.count', 1 do
-      post chefs_path, params: { chef: { chefname: "admin2" , email:"admin22@mail.com",
-                                         password: 'admine22', password_confirmation: 'admine22' } }
+      post chefs_path, params: { chef: { chefname: "admin2" , email:"admin@mail.com",
+                                         password: 'admin33', password_confirmation: 'admin33' } }
     end
     follow_redirect!
     assert_template 'chefs/show'
+
   end
 
   test "reject invalid sign up" do
@@ -25,6 +26,8 @@ class ChefSignupInTest < ActionDispatch::IntegrationTest
       post chefs_path, params: { chef: { chefname: "" , email:"", password: 'superji', password_confirmation: 'superji'}  }
     end
     assert_template 'chefs/new'
+    assert_select "a[href=?]", login_path
+    assert_select "a[href=?]", logout_path, count:0
   end
 
 end

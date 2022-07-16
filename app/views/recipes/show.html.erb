@@ -10,13 +10,14 @@
   <div class="row buttons">
     <div class="recipe-actions col-md-10-offset-1">
       <p class="center">
-        <%= link_to gravatar_for(@recipe.chef, size: 120) ,chef_path(@recipe.chef)%>
-        <small> <%= @recipe.chef.chefname%>
-      Created : <%= time_ago_in_words(@recipe.created_at)  %> Ago </small><br/>
-        <div class="buttons">
-            <%= link_to   "Edit Recipe" ,edit_recipe_path(@recipe), class:"btn btn-warning buttons"%>
-            <%= link_to   "Destroy", recipe_path(@recipe), data: { confirm: 'Are you sure?'}, method: :delete, class: "btn btn-danger buttons" %>
-        </div>
+        <%= link_to gravatar_for(@recipe.chef, size: 120) ,chef_path(@recipe.chef)%><br/>
+        <small align="center"> <%= @recipe.chef.chefname%> <br/>Created : <%= time_ago_in_words(@recipe.created_at)  %> Ago </small><br/>
+        <%if current_user == @recipe.chef %>
+          <div class="row recipe-actions buttons">
+              <%= link_to   "Edit Recipe" ,edit_recipe_path(@recipe), class:"btn btn-warning buttons"%>
+              <%= link_to   "Destroy", recipe_path(@recipe), data: { confirm: 'Are you sure?'}, method: :delete, class: "btn btn-danger buttons" %>
+          </div>
+        <%end%>
       </p>
     </div>
    </div>

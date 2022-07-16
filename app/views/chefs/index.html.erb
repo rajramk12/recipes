@@ -10,7 +10,9 @@
           <li><%= link_to gravatar_for(chef,size:150), chef_path(chef) %></li>
           <li class="chef-title"><%= link_to chef.chefname.capitalize, chef_path(chef)%></li>
           <%= pluralize(chef.recipes.count , 'recipe') if chef.recipes.count >= 0 %>
+          <%if logged_in? && current_user == chef %>
           <li> <%= button_to 'Delete Chef', chef_path(chef), method: :delete ,class: "btn btn-danger" %></li>
+          <%end%>
           <br/>
         </div>
         </ul>

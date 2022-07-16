@@ -24,6 +24,7 @@ class RecipesTest < ActionDispatch::IntegrationTest
   end
 
   test "get recipe show " do
+    sign_in_as(@chef,'superji')
     get recipe_path(@recipe1)
     assert_response :success
     assert_select "a[href=?]", edit_recipe_path(@recipe1), text: "Edit Recipe"
@@ -32,6 +33,7 @@ class RecipesTest < ActionDispatch::IntegrationTest
   end
 
   test "create valid recipe " do
+    sign_in_as(@chef,'superji')
     get new_recipe_path
     assert_template 'recipes/new'
     name = "super recipe "
@@ -44,6 +46,7 @@ class RecipesTest < ActionDispatch::IntegrationTest
     assert_match desc , response.body
   end
 test "create new invalid recipe" do
+  sign_in_as(@chef,'superji')
   get new_recipe_path
   assert_template 'recipes/new'
   assert_no_difference 'Recipe.count' do

@@ -7,6 +7,7 @@ def setup
 end
 
 test "check delete recipe" do
+  sign_in_as(@chef,'superji')
   get recipe_path(@recipe)
   assert_template "recipes/show"
   assert_select "a[href=?]", recipe_path(@recipe), text:"Destroy"

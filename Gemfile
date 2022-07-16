@@ -40,7 +40,7 @@ gem 'bootstrap-sass', '~> 3.4', '>= 3.4.1'
 
 
 # Use Sass to process CSS
-# gem "sassc-rails"
+gem "sassc-rails"
 
 
 # Use Active Model has_secure_password [https://guides.rubyonrails.org/active_model_basics.html#securepassword]
