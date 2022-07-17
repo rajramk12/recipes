@@ -9,4 +9,5 @@ validates :email, presence: true, length: { maximum: 255},
 has_many :recipes, dependent: :destroy
 has_secure_password
 validates :password,presence: true, length: {minimum:6} , allow_nil: true
+has_many :comments
 end

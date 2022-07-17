@@ -6,4 +6,8 @@ class Recipe < ApplicationRecord
   validates :chef_id, presence: true
   # to get recent recipes
   default_scope -> {order(updated_at: :desc)}
+  has_many :recipe_ingredients
+  has_many :ingredients, through: :recipe_ingredients
+  has_many :comments, dependent: :destroy
+
 end
