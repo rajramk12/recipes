@@ -7,7 +7,7 @@
             <%= form.label :name %>
           </div>
           <div class="col-md-8">
-            <%= form.text_field :name, class:"form-control",placeholder:'Recipe name', autofocus: true %>
+            <%= form.text_field :name, class:"form-control",placeholder:'Blog Name', autofocus: true %>
           </div>
         </div>
         <div class="form-group">
@@ -15,16 +15,16 @@
             <%= form.label :description %><br/>
           </div>
           <div class="col-md-8">
-            <%= form.text_area :description, class:"form-control",placeholder:'Recipe Steps',  size: "60x10" %>
+            <%= form.text_area :description, class:"form-control",placeholder:'Train of Thought',  size: "60x10" %>
           </div>
           </div>
         <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
-          <%= form.submit class:"btn btn-primary btn-lg btn-xlarge"%>
+          <%= form.submit "Create Recipe",class:"btn btn-primary btn-lg btn-xlarge"%>
           </div>
         </div>
   <% end %>
 <div class="col-md-offset-4">
-  <%= link_to "Cancel and Back to Recipes", recipes_path,class:"btn btn-danger btn-small" %>
+  <%= link_to "Cancel and Back to All Recipes", recipes_path,class:"btn btn-danger btn-small" %>
 </div>
  </div>

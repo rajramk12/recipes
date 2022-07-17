@@ -4,7 +4,7 @@
   <%= form_with model: @chef, :html => { class:"form-horizontal" , role:"form"} do |form| %>
       <div class="form-group">
           <div class="control-label col-md-2">
-            <%= form.label :chefname %>
+            <%= form.label :chefname , "User Name"%>
           </div>
           <div class="col-md-8">
             <%= form.text_field :chefname, class:"form-control",placeholder:'User Name', autofocus: true %>
