@@ -7,7 +7,7 @@
             <%= form.label :name %>
           </div>
           <div class="col-md-8">
-            <%= form.text_field :name, class:"form-control",placeholder:'Blog Name', autofocus: true %>
+            <%= form.text_field :name, class:"form-control",placeholder:'Recipe Name', autofocus: true %>
           </div>
         </div>
         <div class="form-group">
@@ -15,9 +15,19 @@
             <%= form.label :description %><br/>
           </div>
           <div class="col-md-8">
-            <%= form.text_area :description, class:"form-control",placeholder:'Train of Thought',  size: "60x10" %>
+            <%= form.text_area :description, class:"form-control",placeholder:'Steps',  size: "60x10" %>
           </div>
+        </div>
+        <div class="form-group">
+          <div class="row">
+            <div class="col-md-offset-2 col-md-8">
+             <%= form.collection_check_boxes :ingredient_ids,Ingredient.all, :id, :name do |checkb| %>
+             <% checkb.label(class:'checkbox-inline input_checkbox') {checkb.check_box(class:'checkbox') + checkb.text} %>
+             <%end%>
+             </div>
           </div>
+        </div>
+
         <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
           <%= form.submit "Create Recipe",class:"btn btn-primary btn-lg btn-xlarge"%>

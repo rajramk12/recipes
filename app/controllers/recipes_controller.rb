@@ -49,7 +49,7 @@ class RecipesController < ApplicationController
   private
     def recipe_param
       #white list the parameters
-      params.require(:recipe).permit(:name, :description)
+      params.require(:recipe).permit(:name, :description,ingredient_ids:[])
     end
 
     def set_recipe
@@ -62,6 +62,5 @@ class RecipesController < ApplicationController
         redirect_to recipes_path
       end
     end
-
 
 end

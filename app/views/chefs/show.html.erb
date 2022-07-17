@@ -5,6 +5,7 @@
     </div>
 </div>
 </div>
+<% if @chef.recipes.count > 0 %>
 <div class="container">
  <div align="center">
  <%= will_paginate @chef_recipes%>
@@ -14,4 +15,9 @@
  <div align="center">
  <%= will_paginate @chef_recipes%>
  </div>
+ <% else %>
+ <div align="center">
+ <h4>Chef has no recipes listed<h4>
+ </div>
+ <% end %>
 
