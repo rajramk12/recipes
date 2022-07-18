@@ -15,7 +15,8 @@
       <p> <%= render recipe.ingredients %></p>
     <% end %>
     <p><small>Created by <%= recipe.chef.chefname %> <br/>
-          <%=time_ago_in_words(recipe.created_at) %> ago</small> </p>
+          <%=time_ago_in_words(recipe.created_at) %> ago</small>
+          <br/> <small><%= pluralize(recipe.comments.count, "Comments") %></small></p>
           <%if logged_in? && ( current_user == recipe.chef || current_user.admin? ) %>
           <div class="recipe-actions">
               <%= link_to   "Edit Recipe" ,edit_recipe_path(recipe), class:"btn btn-warning buttons"%>

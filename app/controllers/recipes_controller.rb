@@ -7,7 +7,8 @@ class RecipesController < ApplicationController
     @recipes = Recipe.paginate(page: params[:page], per_page: 5)
   end
   def show
-    @recipe = Recipe.find(params[:id])
+   @comments = @recipe.comments.paginate(page: params[:page],per_page: 5 )
+   @comment = Comment.new
   end
   #  protected
   def new

@@ -6,15 +6,18 @@
       <hr/>
       <p> <%= simple_format(@recipe.description) %> </p>
     </div>
+      <div class="row">
+    <%if @recipe.ingredients.any?%>
+    <p><span> <%= render @recipe.ingredients %> </span></p>
+  <% end %>
   </div>
+  </div>
+
   <div class="row buttons">
     <div class="recipe-actions col-md-10-offset-1">
       <p class="center">
         <%= link_to gravatar_for(@recipe.chef, size: 120) ,chef_path(@recipe.chef)%><br/>
         <small align="center"> <%= @recipe.chef.chefname%> <br/>Created : <%= time_ago_in_words(@recipe.created_at)  %> Ago </small>
-        <%if @recipe.ingredients.any?%>
-          <p> <%= render @recipe.ingredients %></p>
-        <% end %>
         <% if logged_in? && ( current_user == @recipe.chef || current_user.admin? ) %>
           <div class="row recipe-actions buttons">
               <%= link_to   "Edit Recipe" ,edit_recipe_path(@recipe), class:"btn btn-warning buttons"%>
@@ -24,4 +27,39 @@
       </p>
     </div>
    </div>
+  <% if logged_in? %>
+    <h4> Comment : </h4>
+    <%= form_with model:[@recipe, @comment], :html => { class:"form-horizontal" , role:"form"} do |form| %>
+        <div class="form-group">
+          <div class="col-md-8">
+            <%= form.label :description %>
+          </div>
+          <div class="col-md-8">
+            <%= form.text_area :description,size: 50*10, class:"form-control",placeholder:'Enter your Comment ', autofocus: true %>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-md-offset-2 col-md-10">
+            <%= form.submit "Post Comment"%>
+          </div>
+        </div>
+    <% end %>
+  <%end%>
+<%if @recipe.comments != 0 %>
+  <div class="row well">
+    <div class="col-md-8">
+    <h3>Prior Comments: </h3>
+      <div id="messages">
+      <%= render partial: 'comments/comments' , object: @comments %>
+      </div>
+    </div>
+  </div>
+<%else%>
+  <div class="row">
+   <div class="col-md-8 col-md-offset-2">
+     <h3>No Comments Yet!</h3>
+   </div>
+  </div>
+<%end%>
 </div>
+

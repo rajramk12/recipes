@@ -65,6 +65,7 @@ group :development, :test do
   gem 'rails-controller-testing'
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug"
+  gem 'byebug', '~> 11.1', '>= 11.1.3'
 end
 
 group :development do
