@@ -41,7 +41,7 @@ class ChefsController < ApplicationController
   def destroy
     if !@chef.admin?
       if @chef.destroy
-        flash[:success] = "User #{@chef.chefname} and all thoughts are deleted"
+        flash[:success] = "User #{@chef.chefname} and all Recipes are deleted"
         session[:chef_id] = nil
         redirect_to chefs_path
       end

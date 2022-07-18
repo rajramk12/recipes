@@ -30,7 +30,7 @@
 
         <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
-          <%= form.submit "Create Recipe",class:"btn btn-primary btn-lg btn-xlarge"%>
+          <%= form.submit(@recipe.new_record? ? "Create Recipe" : "update recipe" ,class:"btn btn-primary btn-lg btn-xlarge")%>
           </div>
         </div>
   <% end %>

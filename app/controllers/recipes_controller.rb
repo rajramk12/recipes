@@ -19,7 +19,7 @@ class RecipesController < ApplicationController
     @recipe = Recipe.new(recipe_param)
     @recipe.chef = current_user
     if @recipe.save
-      flash[:success] = 'Thought uploaded successfully'
+      flash[:success] = 'Recipe uploaded successfully'
       redirect_to recipe_path(@recipe)
     else
       render 'recipes/new'
@@ -32,7 +32,7 @@ class RecipesController < ApplicationController
   def update
     @recipe = Recipe.find(params[:id])
     if @recipe.update(recipe_param)
-      flash[:success] = 'Thought updated successfully'
+      flash[:success] = 'Recipe updated successfully'
       redirect_to recipe_path(@recipe)
     else
       render 'edit'
@@ -42,7 +42,7 @@ class RecipesController < ApplicationController
   def destroy
     @recipe = Recipe.find(params[:id])
     if @recipe.destroy
-      flash[:success] = 'Thought Deleted'
+      flash[:success] = 'Recipe is Deleted'
       redirect_to recipes_path
     end
   end
@@ -59,7 +59,7 @@ class RecipesController < ApplicationController
 
     def require_same_user
       if current_user != @recipe.chef && !current_user.admin?
-        flash[:danger] = 'You can edit your Thoughts only!'
+        flash[:danger] = 'You can edit your Recipes only!'
         redirect_to recipes_path
       end
     end
