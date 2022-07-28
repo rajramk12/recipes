@@ -16,7 +16,7 @@ module Recipes
 
     config.assets.paths << Rails.root.join("app", "assets", "images")
 
-    config.action_cable.mount_path  = '/cable'
+    # config.action_cable.mount_path  = '/cable'
     # Configuration for the application, engines, and railties goes here.
     #
     # These settings can be overridden in specific environments using the files
