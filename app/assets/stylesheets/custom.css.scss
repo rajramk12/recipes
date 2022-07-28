@@ -86,3 +86,56 @@ font-size:1.25em;
 .input_checkbox{
 width: auto !important ;
 }
+
+.Admintext {
+  margin-top: 5px;
+  margin-right: 10px;
+  text-emphasis-color: red;
+}
+.center-block{
+  float: none;
+}
+.chat-container{
+bottom: 0;
+left:0;
+right:0;
+top:150px;
+width: 90%;
+}
+
+.message-container{
+  .form_control{
+    float: left;
+    width: 80%;
+  }
+  .btn{
+    // float:right;
+    margin-left: 20px;
+    margin-bottom: 50px;
+    position: relative;
+    height: 45px !important;
+    width: 15%;;
+    margin-left: 20px;
+
+  }
+}
+.message-content textarea{
+  margin-left: 20px;
+  padding-left: 30px;
+  border-radius: 5px;
+}
+
+.message{
+padding-left: 5px;
+padding-top: 10px;
+}
+.messages{
+  border: 1px solid ;
+  border-radius: 5px;
+  height: 16em;
+  position: relative;
+  overflow: auto;
+}
+.liking {
+  padding-right: 10px;
+}

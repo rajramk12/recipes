@@ -6,6 +6,7 @@ ruby "3.1.2"
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.0.3"
 
+gem 'bundler', '2.3.19'
 #trying mongoDB
 # gem 'mongoid', '~> 7.4'
 
@@ -24,9 +25,6 @@ gem "stimulus-rails"
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem "jbuilder"
 
-# Use Redis adapter to run Action Cable in production
-# gem "redis", "~> 4.0"
-
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
 # gem "kredis"
 
@@ -38,10 +36,10 @@ gem "bootsnap", require: false
 
 gem 'bootstrap-sass', '~> 3.4', '>= 3.4.1'
 
-
 # Use Sass to process CSS
 gem "sassc-rails"
 
+gem 'coffee-rails', '~> 5.0.0'
 
 # Use Active Model has_secure_password [https://guides.rubyonrails.org/active_model_basics.html#securepassword]
 gem "bcrypt", "~> 3.1.7"
@@ -54,6 +52,12 @@ gem "jquery-rails"
 gem 'will_paginate', '~> 3.3', '>= 3.3.1'
 
 gem 'bootstrap-will_paginate', '~> 1.0'
+
+gem 'carrierwave', '~> 2.2', '>= 2.2.2'
+
+gem 'mini_magick', '~> 4.11'
+
+# gem 'fog', '~> 2.2'
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
@@ -88,6 +92,10 @@ group :test do
 end
 
 group :production do
+  # Currently heroku takes care of it
   gem "pg"
+  # "in future we may use mango and another DB locally
+  # Use Redis adapter to run Action Cable in production
+  gem "redis"
 end
 # gem "ruby-lsp", "~> 0.2.0", :group => :development

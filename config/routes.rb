@@ -6,6 +6,9 @@ Rails.application.routes.draw do
   get "/signup", to: "chefs#new"
   resources :recipes do
     resources :comments , only: [:create]
+    member do
+      post 'like'
+    end
   end
 
   resources :chefs , except: [:new]
@@ -15,5 +18,10 @@ Rails.application.routes.draw do
   delete '/logout', to: 'sessions#destroy'
 
   resources :ingredients, except: [:destroy]
+
+  mount ActionCable.server => '/cable'
+
+  get '/chat', to: 'chatrooms#show'
+  resources :messages, only: [:create]
 
 end

@@ -1,0 +1,15 @@
+<%= render 'shared/pagetitle', pageTitle:"Chef\'s Chatroom "%>
+  <div class='row chat-container'>
+    <div class='col-md-12 center-block'>
+      <div class='messages' id = 'messages'>
+        <%=  render @messages%>
+      </div>
+      <hr/>
+    </div>
+  </div>
+  <div class='message-container'>
+    <%= form_with model: @message, remote: true, :html => { class: "form-horizontal", role: "form"} do |form| %>
+      <%= form.text_area :content, size: "120x3",data:{ behavior: "room_speaker"}, placeholder: 'Type your message!' %>
+      <%= form.submit "Send", class: 'btn btn-primary', data:{send:"message"} %>
+    <%end%>
+  </div>

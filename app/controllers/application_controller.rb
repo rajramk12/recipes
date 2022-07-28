@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
   def current_user
     if session[:chef_id]
       begin
-        @current_chef = Chef.find(session[:chef_id])
+        @current_user = Chef.find(session[:chef_id])
       rescue ActiveRecord::RecordNotFound => e
         redirect_to root_path
       end
